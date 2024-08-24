@@ -1,0 +1,10 @@
+image: maven:3.9.7-amazoncorretto-17
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - maven
+        script:
+          - mvn --version
+          - mvn clean verify javadoc:jar --settings ./bin/settings.xml

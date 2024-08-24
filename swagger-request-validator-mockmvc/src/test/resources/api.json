@@ -1,0 +1,101 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Hello world service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/hello/{name}": {
+      "get": {
+        "summary": "Say hello",
+        "operationId": "say hello",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "name",
+          "in": "path",
+          "description": "Person to say hello to",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "Hello response",
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          },
+          "204": {
+            "description": "Request processed."
+          }
+        }
+      }
+    },
+    "/add": {
+      "post": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Add a new person",
+        "description": "",
+        "operationId": "addPerson",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Person object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Person"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Person response",
+            "schema": {
+              "$ref": "#/definitions/Person"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Message": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

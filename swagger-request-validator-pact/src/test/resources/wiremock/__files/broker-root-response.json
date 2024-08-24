@@ -1,0 +1,14 @@
+{
+  "_links": {
+    "self": {
+      "href": "http://{{request.headers.Host}}",
+      "title": "Index",
+      "templated": false
+    },
+    "pb:latest-provider-pacts": {
+      "href": "http://{{request.headers.Host}}/pacts/provider/{provider}/latest",
+      "title": "Latest pacts by provider",
+      "templated": true
+    }
+  }
+}
